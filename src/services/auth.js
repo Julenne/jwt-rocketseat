@@ -21,7 +21,7 @@ const authenticate = async ({ email, password }) => {
   if (!isMatch) {
     return authFailed(email)
   }
-  return token.sign(user.dataValues)
+  return token.sign({id: user.id, role: user.role}) // colocar só informações importantes no payload para não enviar valores sensíveis.
 }
 
 module.exports = {
